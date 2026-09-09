@@ -78,14 +78,14 @@ export function ScratchCard() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-sm">
+    <div className="mx-auto w-full max-w-md">
       <div
         ref={wrapRef}
-        className="relative h-32 select-none overflow-hidden rounded-2xl border border-white/70 bg-white shadow-[0_20px_40px_-20px_rgb(90_74_94_/_0.35)]"
+        className={`scratch-card relative h-40 select-none overflow-hidden rounded-3xl border border-white/80 bg-white shadow-[0_24px_48px_-22px_rgb(90_74_94_/_0.4)] sm:h-44 ${!started && !revealed ? "scratch-card-idle" : ""}`}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white via-white to-butter/40">
           <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
-            We&apos;re getting married
+            A little surprise awaits
           </p>
           <p className="shimmer-text mt-1 text-4xl font-semibold tracking-[0.15em] sm:text-5xl">
             {wedding.weddingDateLabel}
@@ -94,6 +94,15 @@ export function ScratchCard() {
             Saturday, {wedding.weddingDateLong}
           </p>
         </div>
+
+        {!revealed && (
+          <div className="pointer-events-none absolute inset-0 z-20" aria-hidden="true">
+            <span className="scratch-sheen" />
+            <span className="scratch-sparkle scratch-sparkle-one">✦</span>
+            <span className="scratch-sparkle scratch-sparkle-two">✧</span>
+            <span className="scratch-sparkle scratch-sparkle-three">✦</span>
+          </div>
+        )}
 
         <canvas
           ref={canvasRef}

@@ -1,19 +1,25 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Great_Vibes } from 'next/font/google'
+import { Allura, DM_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
 })
 
-const greatVibes = Great_Vibes({
+const allura = Allura({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-script',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
 })
 
 export const metadata: Metadata = {
@@ -28,18 +34,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
+      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },
@@ -56,11 +53,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${greatVibes.variable}`}>
-      <body className="antialiased font-serif">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+    <html lang="en" className={`${playfair.variable} ${allura.variable} ${dmSans.variable}`}>
+      <body className="antialiased font-sans">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body>
     </html>
   )
 }

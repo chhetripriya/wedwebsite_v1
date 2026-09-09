@@ -12,6 +12,7 @@ export function Rsvp() {
   const [selected, setSelected] = useState<string[]>(events.map((e) => e.id))
   const [note, setNote] = useState("")
   const [error, setError] = useState<string | null>(null)
+  const [whatsappOpened, setWhatsappOpened] = useState(false)
 
   const toggle = (id: string) =>
     setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
@@ -37,8 +38,15 @@ export function Rsvp() {
     }
     if (note.trim()) lines.push(`Message: ${note.trim()}`)
 
-    const url = `https://wa.me/${wedding.rsvpWhatsApp}?text=${encodeURIComponent(lines.join("\n"))}`
-    window.open(url, "_blank", "noopener,noreferrer")
+    const url = `https://web.whatsapp.com/send?phone=${wedding.rsvpWhatsApp}&text=${encodeURIComponent(lines.join("\n"))}`
+    const whatsappWindow = window.open(url, "_blank", "noopener,noreferrer")
+    if (whatsappWindow) {
+      setWhatsappOpened(true)
+    } else {
+      // Popup blockers may prevent the new tab; keep the invitation page intact
+      // and provide a fallback link below.
+      setError("Please allow pop-ups for this site to open WhatsApp in a new tab.")
+    }
   }
 
   return (
@@ -154,14 +162,19 @@ export function Rsvp() {
 
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose px-6 py-4 text-sm uppercase tracking-[0.25em] text-white shadow-[0_14px_30px_-12px_rgb(201_139_147_/_0.9)] transition-transform hover:-translate-y-0.5"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose px-6 py-4 text-sm uppercase tracking-[0.25em] text-white shadow-[0_14px_30px_-12px_rgb(201_139_147_/_0.9)] soft-button transition-transform hover:-translate-y-0.5"
         >
           <MessageCircle className="h-4 w-4" aria-hidden="true" />
           Send RSVP on WhatsApp
         </button>
         <p className="text-center text-sm text-muted-foreground">
-          Your response opens in WhatsApp, pre-filled and ready to send.
+          WhatsApp opens in a new tab with your response pre-filled. Keep this invitation tab open so you can return after sending.
         </p>
+        {whatsappOpened && (
+          <p role="status" className="text-center text-sm text-plum/80">
+            WhatsApp is open in a new tab. After sending, close that tab to return here.
+          </p>
+        )}
       </form>
     </section>
   )

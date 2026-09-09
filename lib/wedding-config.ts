@@ -5,7 +5,7 @@ export const wedding = {
     father: "Mr. Amar Bahadur",
     mother: "Smt. Leela Devi",
     message:
-      "From the first hello to forever, every moment with you has felt like coming home. I can't wait to begin this beautiful journey by your side.",
+      "With hearts full of joy and gratitude, we invite you to celebrate the beautiful beginning of Priya & Sunil’s life together. Your love, blessings and presence will make these precious moments even more special.",
   },
   groom: {
     name: "Sunil Tandon",
@@ -48,9 +48,9 @@ export const events: WeddingEvent[] = [
     date: "19 November 2026",
     time: "5:00 PM onwards",
     venue: "Lakshmi Farmhouse",
-    themeName: "Pastel Shades",
-    colors: ["#F7C8D4", "#D8CCF1", "#CBE8DD", "#FBE7B5", "#CFE2F3"],
-    accent: "#F7C8D4",
+    themeName: "Teal & Blue Shades",
+    colors: ["#0F766E", "#14B8A6", "#5EEAD4", "#38BDF8", "#1E6FA8"],
+    accent: "#5EEAD4",
   },
   {
     id: "haldi",
@@ -59,9 +59,9 @@ export const events: WeddingEvent[] = [
     date: "20 November 2026",
     time: "11:00 AM onwards",
     venue: "Lakshmi Farmhouse",
-    themeName: "Teal & Blue Shades",
-    colors: ["#0F766E", "#14B8A6", "#5EEAD4", "#38BDF8", "#1E6FA8"],
-    accent: "#5EEAD4",
+    themeName: "Pastel Shades",
+    colors: ["#F7C8D4", "#D8CCF1", "#CBE8DD", "#FBE7B5", "#CFE2F3"],
+    accent: "#F7C8D4",
   },
   {
     id: "sangeet",
@@ -77,7 +77,7 @@ export const events: WeddingEvent[] = [
   {
     id: "wedding",
     name: "Wedding",
-    tagline: "The sacred vows, under the stars",
+    tagline: "A beautiful morning of sacred vows and blessings",
     date: "21 November 2026",
     time: "11:00 AM",
     venue: "Lakshmi Farmhouse",
@@ -88,7 +88,7 @@ export const events: WeddingEvent[] = [
   {
     id: "reception",
     name: "Reception",
-    tagline: "Dinner, toasts and a celebration of love",
+    tagline: "A joyful afternoon of love, laughter and togetherness",
     date: "21 November 2026",
     time: "1:30 PM",
     venue: "Lakshmi Farmhouse",

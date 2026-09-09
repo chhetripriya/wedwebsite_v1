@@ -5,20 +5,14 @@ import { wedding } from "@/lib/wedding-config"
 export function Messages() {
   return (
     <section id="messages" className="px-4 py-24">
-      <SectionHeading eyebrow="A few words" title="From our hearts" />
+      <SectionHeading eyebrow="A little note from the family" title="From our hearts" />
 
-      <div className="mx-auto mt-14 grid max-w-5xl gap-8 md:grid-cols-2">
+      <div className="mx-auto mt-14 max-w-3xl">
         <Note
-          name={wedding.bride.name}
-          role="The bride"
+          name="Priya’s family"
+          role="From the bride’s family"
           message={wedding.bride.message}
           tint="from-blush/60 via-white to-lavender/50"
-        />
-        <Note
-          name={wedding.groom.name}
-          role="The groom"
-          message={wedding.groom.message}
-          tint="from-sky/60 via-white to-mint/50"
         />
       </div>
     </section>
@@ -28,7 +22,7 @@ export function Messages() {
 function Note({ name, role, message, tint }: { name: string; role: string; message: string; tint: string }) {
   return (
     <figure
-      className={`relative rounded-3xl bg-gradient-to-br ${tint} p-8 shadow-[0_24px_50px_-28px_rgb(90_74_94_/_0.45)] sm:p-10`}
+      className={`elegant-card relative rounded-3xl bg-gradient-to-br ${tint} p-8 shadow-[0_24px_50px_-28px_rgb(90_74_94_/_0.45)] sm:p-10`}
     >
       <Heart className="absolute right-8 top-8 h-5 w-5 text-rose/60" aria-hidden="true" fill="currentColor" />
       <p className="text-xs uppercase tracking-[0.35em] text-rose">{role}</p>

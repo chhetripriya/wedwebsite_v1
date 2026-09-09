@@ -7,7 +7,7 @@ export function Venue() {
     <section id="venue" className="px-4 py-24">
       <SectionHeading eyebrow="Where to find us" title="The venue" />
 
-      <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_24px_50px_-28px_rgb(90_74_94_/_0.45)] backdrop-blur md:grid md:grid-cols-5">
+      <div className="mx-auto mt-14 max-w-4xl animate-gentle-bloom overflow-hidden rounded-3xl border border-white/70 bg-white/80 shadow-[0_24px_50px_-28px_rgb(90_74_94_/_0.45)] backdrop-blur md:grid md:grid-cols-5">
         <div className="relative flex min-h-64 items-center justify-center overflow-hidden bg-gradient-to-br from-mint via-sky to-lavender md:col-span-2">
           <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle,white_1.5px,transparent_1.5px)] [background-size:22px_22px]" />
           <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white/90 shadow-[0_20px_40px_-15px_rgb(90_74_94_/_0.5)]">
@@ -18,7 +18,7 @@ export function Venue() {
 
         <div className="flex flex-col justify-center p-8 md:col-span-3 md:p-10">
           <p className="text-xs uppercase tracking-[0.35em] text-rose">All events</p>
-          <h3 className="mt-2 text-4xl font-semibold text-plum">{wedding.venue.name}</h3>
+          <h3 className="font-serif mt-2 text-4xl font-medium tracking-[-0.02em] text-plum">{wedding.venue.name}</h3>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{wedding.venue.note}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">

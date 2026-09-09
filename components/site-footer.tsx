@@ -8,7 +8,7 @@ export function SiteFooter() {
         <span className="h-1.5 w-1.5 rounded-full bg-rose/70" />
         <span className="h-px w-16 bg-gradient-to-l from-transparent to-rose/60" />
       </div>
-      <p className="font-script mt-6 text-5xl text-plum">
+      <p className="font-script mt-6 text-6xl text-plum">
         {wedding.bride.firstName} &amp; {wedding.groom.firstName}
       </p>
       <p className="mt-2 text-sm uppercase tracking-[0.35em] text-muted-foreground">

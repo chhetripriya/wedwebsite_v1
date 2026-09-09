@@ -31,12 +31,12 @@ export function Countdown() {
 
   return (
     <section id="countdown" className="px-4 py-24">
-      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-plum via-[#6b5a72] to-[#8a6f80] px-6 py-16 text-center text-white shadow-[0_40px_80px_-40px_rgb(90_74_94_/_0.8)]">
+      <div className="relative mx-auto max-w-4xl animate-gentle-bloom overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-plum via-[#6b5a72] to-[#8a6f80] px-6 py-16 text-center text-white shadow-[0_40px_80px_-40px_rgb(90_74_94_/_0.8)]">
         <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-blush/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-lavender/30 blur-3xl" />
 
         <p className="relative text-xs uppercase tracking-[0.4em] text-blush">Counting the moments</p>
-        <h2 className="font-script relative mt-3 text-6xl leading-none sm:text-7xl">See you soon</h2>
+        <h2 className="font-serif relative mt-3 text-5xl font-medium leading-none tracking-[-0.02em] sm:text-6xl">See you soon</h2>
 
         <div className="relative mx-auto mt-10 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4" role="timer" aria-live="off">
           {units.map((u) => (
