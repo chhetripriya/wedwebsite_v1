@@ -29,13 +29,13 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Priya & Sunil | 22 November 2026',
+  title: 'Priya & Sunil | 21 November 2026',
   description:
     'You are warmly invited to celebrate the wedding of Priya Chhetri and Sunil Tandon at Lakshmi Farmhouse. Mehendi, Haldi, Sangeet, Wedding and Reception details, RSVP and more.',
   generator: 'v0.app',
   openGraph: {
     title: 'Priya & Sunil are getting married',
-    description: 'Join us on 22 November 2026 at Lakshmi Farmhouse.',
+    description: 'Join us on 21 November 2026 at Lakshmi Farmhouse.',
     images: ['/images/pastel-florals.png'],
   },
   icons: {
