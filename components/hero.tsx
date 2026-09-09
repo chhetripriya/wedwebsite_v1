@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Flower2 } from "lucide-react"
 import { ScratchCard } from "@/components/scratch-card"
 import { wedding } from "@/lib/wedding-config"
 
@@ -27,21 +26,22 @@ export function Hero() {
 
       <div className="relative w-full max-w-3xl">
         <div className="animate-gentle-bloom" style={{ animationDelay: "100ms" }}>
-          <div className="ganesh-blessing mx-auto flex items-center justify-center gap-2 text-[#9b1b30]">
-            <svg viewBox="0 0 48 48" className="h-10 w-10 shrink-0 sm:h-12 sm:w-12" aria-hidden="true">
-              <path d="M15 19c-4-5-7-4-8-2 3 0 5 2 6 5-3-1-5 0-6 2 4-1 7 1 9 4 1 2 2 4 6 5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M33 19c4-5 7-4 8-2-3 0-5 2-6 5 3-1 5 0 6 2-4-1-7 1-9 4-1 2-2 4-6 5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M18 18c0-6 4-10 6-10s6 4 6 10v7c0 3-2 6-6 6s-6-3-6-6z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-              <path d="M24 19c3 3 3 7 0 10-1 1-1 3 1 4 2 1 4 0 5-2" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-              <circle cx="22" cy="18" r="0.9" fill="currentColor"/>
-              <circle cx="26" cy="18" r="0.9" fill="currentColor"/>
-              <path d="M18 36c2 3 4 4 6 4s4-1 6-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-            </svg>
-            <p className="font-serif text-sm font-medium tracking-[0.18em] sm:text-base">ॐ गणेशाय नमः</p>
+          <div className="ganesh-blessing mx-auto flex flex-col items-center justify-center gap-4 text-[#9b1b30]">
+            <div className="ganesh-medallion animate-soft-float">
+              <Image
+                src="/images/ganesh.png"
+                alt="Lord Ganesha, invoked for an auspicious beginning"
+                width={220}
+                height={220}
+                priority
+                className="ganesh-image relative z-10 h-32 w-32 object-contain sm:h-40 sm:w-40"
+              />
+            </div>
+            <p className="font-devanagari text-lg tracking-[0.12em] sm:text-xl">श्री गणेशाय नमः</p>
           </div>
         </div>
 
-        <div className="mt-5 animate-gentle-bloom" style={{ animationDelay: "220ms" }}>
+        <div className="mt-6 animate-gentle-bloom" style={{ animationDelay: "220ms" }}>
           <p className="text-xs uppercase tracking-[0.32em] text-rose sm:text-sm">
             Together with their families
           </p>
@@ -71,12 +71,14 @@ export function Hero() {
             relation="Daughter of"
             father={wedding.bride.father}
             mother={wedding.bride.mother}
+            floatDelay="0s"
           />
           <ParentCard
             name={wedding.groom.name}
             relation="Son of"
             father={wedding.groom.father}
             mother={wedding.groom.mother}
+            floatDelay="-2.6s"
           />
         </div>
 
@@ -110,21 +112,44 @@ function ParentCard({
   relation,
   father,
   mother,
+  floatDelay,
 }: {
   name: string
   relation: string
   father: string
   mother: string
+  floatDelay: string
 }) {
   return (
-    <div className="parent-card group relative rounded-[2rem] p-[1px] shadow-[0_24px_55px_-30px_rgb(90_74_94_/_0.5)]">
+    <div
+      className="parent-card group relative rounded-[2rem] p-[1px] shadow-[0_24px_55px_-30px_rgb(90_74_94_/_0.5)]"
+      style={{ animationDelay: floatDelay }}
+    >
       <div className="parent-card-glow parent-card-glow-one" aria-hidden="true" />
       <div className="parent-card-glow parent-card-glow-two" aria-hidden="true" />
-      <div className="parent-flower parent-flower-left" aria-hidden="true"><Flower2 className="h-6 w-6" /></div>
-      <div className="parent-flower parent-flower-right" aria-hidden="true"><Flower2 className="h-5 w-5" /></div>
 
-      <div className="relative z-10 flex min-h-[156px] flex-col items-center justify-center overflow-hidden rounded-[calc(2rem-1px)] bg-white/82 px-5 py-6 text-center backdrop-blur-xl">
+      <div className="relative z-10 flex min-h-[172px] flex-col items-center justify-center overflow-hidden rounded-[calc(2rem-1px)] bg-white/82 px-5 pb-6 pt-10 text-center backdrop-blur-xl">
         <div className="parent-card-sheen" aria-hidden="true" />
+
+        <div className="parent-bouquet parent-bouquet-left" aria-hidden="true">
+          <Image
+            src="/images/flower-bouquet.png"
+            alt=""
+            width={200}
+            height={200}
+            className="h-full w-full object-contain mix-blend-multiply"
+          />
+        </div>
+        <div className="parent-bouquet parent-bouquet-right" aria-hidden="true">
+          <Image
+            src="/images/flower-bouquet.png"
+            alt=""
+            width={200}
+            height={200}
+            className="h-full w-full -scale-x-100 object-contain mix-blend-multiply"
+          />
+        </div>
+
         <div className="mb-3 flex items-center gap-2" aria-hidden="true">
           <span className="h-px w-12 bg-gradient-to-r from-transparent to-rose/45" />
           <span className="h-1.5 w-1.5 rounded-full bg-rose/55" />

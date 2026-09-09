@@ -74,8 +74,8 @@ export function EnvelopeIntro({ onFinished }: { onFinished: () => void }) {
             <div className={`envelope-letter-top absolute inset-x-0 top-0 h-1/2 ${letterUnfolded ? "open" : ""}`}>
               {/* Front face (inside of the letter) */}
               <div className="envelope-letter-face absolute inset-0 flex flex-col items-center justify-end rounded-t-md border border-b-0 border-blush/70 bg-white px-6 pb-2 text-center">
-                <p className="text-lg font-serif font-medium tracking-[0.08em] leading-tight text-rose sm:text-xl">
-                  ॐ गणेशाय नमः
+                <p className="font-devanagari text-lg tracking-[0.06em] leading-tight text-rose sm:text-xl">
+                  श्री गणेशाय नमः
                 </p>
                 <p className="mt-2 font-serif text-2xl font-medium tracking-[0.04em] text-plum sm:text-3xl">
                   A Sacred Beginning

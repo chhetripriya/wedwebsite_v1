@@ -1,7 +1,13 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Allura, DM_Sans, Playfair_Display } from 'next/font/google'
+import { Allura, DM_Sans, Playfair_Display, Tiro_Devanagari_Sanskrit } from 'next/font/google'
 import './globals.css'
+
+const tiroDevanagari = Tiro_Devanagari_Sanskrit({
+  subsets: ['devanagari'],
+  weight: '400',
+  variable: '--font-devanagari',
+})
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -53,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${allura.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${allura.variable} ${dmSans.variable} ${tiroDevanagari.variable}`}>
       <body className="antialiased font-sans">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body>
     </html>
   )
