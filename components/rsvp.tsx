@@ -18,36 +18,36 @@ export function Rsvp() {
     setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
 
   const onSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    const trimmed = name.trim()
-    if (trimmed.length < 2) {
-      setError("Please tell us your name.")
-      return
-    }
-    setError(null)
-
-    const eventNames = events.filter((ev) => selected.includes(ev.id)).map((ev) => ev.name)
-    const lines = [
-      `RSVP for ${wedding.bride.firstName} & ${wedding.groom.firstName}'s wedding`,
-      `Name: ${trimmed}`,
-      `Attending: ${attending === "yes" ? "Yes, joyfully!" : "Regretfully, no"}`,
-    ]
-    if (attending === "yes") {
-      lines.push(`Guests: ${guests}`)
-      lines.push(`Events: ${eventNames.length ? eventNames.join(", ") : "None selected"}`)
-    }
-    if (note.trim()) lines.push(`Message: ${note.trim()}`)
-
-    const url = `https://web.whatsapp.com/send?phone=${wedding.rsvpWhatsApp}&text=${encodeURIComponent(lines.join("\n"))}`
-    const whatsappWindow = window.open(url, "_blank", "noopener,noreferrer")
-    if (whatsappWindow) {
-      setWhatsappOpened(true)
-    } else {
-      // Popup blockers may prevent the new tab; keep the invitation page intact
-      // and provide a fallback link below.
-      setError("Please allow pop-ups for this site to open WhatsApp in a new tab.")
-    }
+  e.preventDefault()
+  const trimmed = name.trim()
+  if (trimmed.length < 2) {
+    setError("Please tell us your name.")
+    return
   }
+  setError(null)
+  const eventNames = events.filter((ev) => selected.includes(ev.id)).map((ev) => ev.name)
+  const lines = [
+    `RSVP for ${wedding.bride.firstName} & ${wedding.groom.firstName}'s wedding`,
+    `Name: ${trimmed}`,
+    `Attending: ${attending === "yes" ? "Yes, joyfully!" : "Regretfully, no"}`,
+  ]
+  if (attending === "yes") {
+    lines.push(`Guests: ${guests}`)
+    lines.push(`Events: ${eventNames.length ? eventNames.join(", ") : "None selected"}`)
+  }
+  if (note.trim()) lines.push(`Message: ${note.trim()}`)
+  // Keep only digits so the number is always in the format wa.me expects
+  const phone = wedding.rsvpWhatsApp.replace(/\D/g, "")
+  // wa.me works on BOTH desktop browsers and mobile browsers (opens the app on phones)
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`
+  const whatsappWindow = window.open(url, "_blank", "noopener,noreferrer")
+  if (whatsappWindow) {
+    setWhatsappOpened(true)
+  } else {
+    // Popup blocked (common on mobile): navigate the current tab instead so it still works
+    window.location.href = url
+  }
+}
 
   return (
     <section id="rsvp" className="px-4 py-24">
