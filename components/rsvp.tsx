@@ -8,7 +8,7 @@ import { events, wedding } from "@/lib/wedding-config"
 export function Rsvp() {
   const [name, setName] = useState("")
   const [attending, setAttending] = useState<"yes" | "no">("yes")
-  const [guests, setGuests] = useState(1)
+  const [guests, setGuests] = useState("1")
   const [selected, setSelected] = useState<string[]>(events.map((e) => e.id))
   const [note, setNote] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -32,7 +32,8 @@ export function Rsvp() {
     `Attending: ${attending === "yes" ? "Yes, joyfully!" : "Regretfully, no"}`,
   ]
   if (attending === "yes") {
-    lines.push(`Guests: ${guests}`)
+    const guestCount = Math.min(10, Math.max(1, Number.parseInt(guests, 10) || 1))
+    lines.push(`Guests: ${guestCount}`)
     lines.push(`Events: ${eventNames.length ? eventNames.join(", ") : "None selected"}`)
   }
   if (note.trim()) lines.push(`Message: ${note.trim()}`)
@@ -110,10 +111,20 @@ export function Rsvp() {
               <input
                 id="rsvp-guests"
                 type="number"
+                inputMode="numeric"
                 min={1}
                 max={10}
                 value={guests}
-                onChange={(e) => setGuests(Math.min(10, Math.max(1, Number(e.target.value) || 1)))}
+                onChange={(e) => setGuests(e.target.value)}
+                onBlur={() => {
+                  if (guests === "") return
+                  const value = Number.parseInt(guests, 10)
+                  if (!Number.isFinite(value)) {
+                    setGuests("1")
+                    return
+                  }
+                  setGuests(String(Math.min(10, Math.max(1, value))))
+                }}
                 className="w-full rounded-xl border border-input bg-white px-4 py-3 text-lg text-plum outline-none transition focus:border-rose focus:ring-2 focus:ring-rose/30"
               />
             </Field>
