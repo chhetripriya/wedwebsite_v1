@@ -84,7 +84,7 @@ export function EnvelopeIntro({ onFinished }: { onFinished: () => void }) {
               {/* Back face (outside of the letter, seen while folded) */}
               <div className="envelope-letter-face envelope-letter-back absolute inset-0 flex items-center justify-center rounded-b-md border border-t-0 border-blush/70 bg-white">
                 <span className="font-script text-2xl text-rose/70 sm:text-3xl">
-                  {wedding.bride.firstName} &amp; {wedding.groom.firstName}
+                  {wedding.bride.firstName} weds {wedding.groom.firstName}
                 </span>
               </div>
             </div>
@@ -93,7 +93,7 @@ export function EnvelopeIntro({ onFinished }: { onFinished: () => void }) {
             <div className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col items-center justify-start rounded-b-md border border-t-0 border-blush/70 bg-white px-6 pt-2 text-center shadow-[0_10px_30px_-10px_rgb(90_74_94_/_0.25)]">
               <div className="h-px w-16 bg-blush" />
               <p className="font-script mt-1 text-3xl leading-none text-rose sm:text-4xl">
-                {wedding.bride.firstName} &amp; {wedding.groom.firstName}
+                {wedding.bride.firstName} weds {wedding.groom.firstName}
               </p>
               <p className="mt-2 text-[10px] tracking-[0.12em] text-plum/80 sm:text-xs">
                 With love, family &amp; blessings
