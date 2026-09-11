@@ -9,8 +9,9 @@ export function Messages() {
 
       <div className="mx-auto mt-14 max-w-3xl">
         <Note
-          name="Priya’s family"
-          role="From the bride’s family"
+          name="With love,
+                Our Families"
+          role="WITH LOVE & BLESSINGS"
           message={wedding.bride.message}
           tint="from-blush/60 via-white to-lavender/50"
         />
